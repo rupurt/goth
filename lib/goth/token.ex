@@ -272,6 +272,13 @@ defmodule Goth.Token do
         }
 
         request(%{config | source: {:workload_identity, credentials}})
+
+      :error ->
+        raise """
+        Goth.Config.get(:token_source) error
+
+        #{inspect(opts)}
+        """
     end
   end
 
